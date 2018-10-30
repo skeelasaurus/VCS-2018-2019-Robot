@@ -28,6 +28,9 @@ int main() {
        
         RightMotor.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
         
+        LeftMotor.spin(vex::directionType::fwd, Controller.Axis4.value(), vex::velocityUnits::pct);
+        
+        RightMotor.spin(vex::directionType::fwd, Controller.Axis1.value(), vex::velocityUnits::pct);
         
         if(Controller1.ButtonUp.pressing()) { 
       
