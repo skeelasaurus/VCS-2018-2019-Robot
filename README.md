@@ -24,9 +24,9 @@ int main() {
     while(1) {
         
        
-        LeftMotor.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
+        LeftMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
        
-        RightMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+        RightMotor.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
         
     }
         if(Controller1.ButtonX.pressing()) { 
@@ -46,4 +46,5 @@ int main() {
             ArmMotor1.stop(vex::brakeType::brake);
             ArmMotor2.stop(vex::brakeType::brake);
         }
-    }  
+    }     
+       
