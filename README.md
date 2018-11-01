@@ -24,39 +24,26 @@ int main() {
     while(1) {
         
        
-        LeftMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+        LeftMotor.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
        
-        RightMotor.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
+        RightMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
         
-        
-        if(Controller1.ButtonUp.pressing()) { 
+    }
+        if(Controller1.ButtonX.pressing()) { 
       
-            ArmMotor.spin(vex::directionType::fwd, armSpeedPCT, vex::velocityUnits::pct);
+            ArmMotor1.spin(vex::directionType::fwd, armSpeedPCT, vex::velocityUnits::pct);
+            
+            ArmMotor2.spin(vex::directionType::rev, armSpeedPCT, vex::velocityUnits::pct);
         }
-        else if(Controller1.ButtonDown.pressing()) {
+        else if(Controller1.ButtonY.pressing()) {
            
-            ArmMotor.spin(vex::directionType::rev, armSpeedPCT, vex::velocityUnits::pct);
+            ArmMotor1.spin(vex::directionType::rev, armSpeedPCT, vex::velocityUnits::pct);
+            
+            ArmMotor2.spin(vex::directionType::rev, armSpeedPCT, vex::velocityUnits::pct);
         }
         else {
           
-            ArmMotor.stop(vex::brakeType::brake);
+            ArmMotor1.stop(vex::brakeType::brake);
+            ArmMotor2.stop(vex::brakeType::brake);
         }
-        
-       
-        if(Controller1.ButtonA.pressing()) { 
-           
-            ClawMotor.spin(vex::directionType::fwd, clawSpeedPCT, vex::velocityUnits::pct);
-        }
-        else if(Controller1.ButtonY.pressing()) { 
-           
-            ClawMotor.spin(vex::directionType::rev, clawSpeedPCT, vex::velocityUnits::pct);
-        }
-        else { 
-            
-            ClawMotor.stop(vex::brakeType::brake);       
-        }
-        
-		vex::task::sleep(20); 
-    }
-
-}
+    }  
