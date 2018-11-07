@@ -29,22 +29,4 @@ int main() {
         RightMotor.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
         
     }
-        if(Controller1.ButtonX.pressing()) { 
       
-            ArmMotor1.spin(vex::directionType::fwd, armSpeedPCT, vex::velocityUnits::pct);
-            
-            ArmMotor2.spin(vex::directionType::rev, armSpeedPCT, vex::velocityUnits::pct);
-        }
-        else if(Controller1.ButtonY.pressing()) {
-           
-            ArmMotor1.spin(vex::directionType::rev, armSpeedPCT, vex::velocityUnits::pct);
-            
-            ArmMotor2.spin(vex::directionType::rev, armSpeedPCT, vex::velocityUnits::pct);
-        }
-        else {
-          
-            ArmMotor1.stop(vex::brakeType::brake);
-            ArmMotor2.stop(vex::brakeType::brake);
-        }
-    }     
-       
