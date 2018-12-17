@@ -1,1 +1,70 @@
+#include "robot-config.h"
+vex::competition    Competition;
+ void pre_auton( void ) {
+            
 
+    }
+    
+void autonomous( void ){
+     for (int i=1; i<=28; i++){
+    LeftMotor.rotateTo(90,vex::rotationUnits::deg,70,vex::velocityUnits::pct,false);
+    RightMotor.rotateTo(90,vex::rotationUnits::deg,70,vex::velocityUnits::pct,false);
+     }
+    
+   
+}
+
+void usercontrol(void){
+    
+    int armSpeedPCTUp = 400;
+    int clawSpeedPCTUp = 200;
+    int downPCT = 400;
+   
+    while(true) {
+        
+       
+        LeftMotor.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
+       
+        RightMotor.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+        
+    
+        if(Controller1.ButtonR1.pressing()) { 
+      
+            BallLau.spin(vex::directionType::fwd, clawSpeedPCTUp, vex::velocityUnits::pct);
+            
+        }
+        
+        else if (Controller1.ButtonL1.pressing()){
+        BallPic.spin(vex::directionType::fwd,armSpeedPCTUp, vex::velocityUnits::pct);
+    }
+    
+        else if (Controller1.ButtonL2.pressing()){
+          
+        BallPic.spin(vex::directionType::rev,downPCT, vex::velocityUnits::pct);
+        
+    }
+    
+        else if (Controller1.ButtonA.pressing()){
+         
+       BallFlip.rotateTo(60,vex::rotationUnits::deg);
+       BallFlip.stop(vex::brakeType::brake);
+        }
+        else {
+          
+            BallLau.stop(vex::brakeType::brake);
+        
+            BallPic.stop(vex::brakeType::brake);
+            
+             }
+        }
+}
+    
+int main() {
+    
+
+    
+    Competition.autonomous( autonomous );
+    
+    Competition.drivercontrol( usercontrol );
+
+}
